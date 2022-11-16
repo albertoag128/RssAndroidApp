@@ -1,5 +1,5 @@
 package com.example.rssapp.management.data
 
-interface ManagementLocalSource {
+interface RssLocalSource {
     fun createRss(url:String, name:String)
 }
