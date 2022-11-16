@@ -1,5 +1,5 @@
 package com.example.rssapp.management.domain
 
 interface ManagementRepository {
-    fun saveRss(model: ManagementModel)
+    suspend fun saveRss(url:String, name:String)
 }
