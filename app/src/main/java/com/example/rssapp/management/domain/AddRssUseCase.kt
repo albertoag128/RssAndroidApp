@@ -1,8 +1,8 @@
 package com.example.rssapp.management.domain
 
-class AddRssUseCase(private val repository: UserRssRepository) {
+class AddUserRssUseCase(private val repository: UserRssRepository) {
 
-    fun execute(name:String, url:String){
+    fun execute(url:String, name:String){
         repository.saveUserRss(url, name)
     }
 
