@@ -1,3 +1,11 @@
 <resources>
+    <!--APP SUBTITLES-->
     <string name="app_name">RssApp</string>
+    <string name="rss_feed_fragment_title">Rss Feed</string>
+    <string name="profile_fragment_title">Profile</string>
+    <string name="rss_manager_fragment_title">Rss Manager</string>
+    <!--MENU NAMES-->
+    <string name="feed_rss_name">News Feed</string>
+    <string name="rss_manager_name">Rss Manager</string>
+    <string name="profile_name">Your news</string>
 </resources>
