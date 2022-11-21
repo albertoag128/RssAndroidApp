@@ -18,6 +18,9 @@
         android:name="com.example.rssapp.management.presentation.RssManagerFragment"
         android:label="@string/rss_manager_fragment_title">
 
+        <action
+            android:id="@+id/action_from_rssManager_to_bottomSheet"
+            app:destination="@+id/bottom_sheet"/>
 
     </fragment>
 
@@ -29,6 +32,18 @@
 
 
     </fragment>
+
+
+    <dialog
+        android:id="@+id/bottom_sheet"
+        android:name="com.example.rssapp.management.presentation.AddRssBottomSheetFragment">
+
+        <action
+            android:id="@+id/action_from_bottomSheet_to_rssManager"
+            app:destination="@+id/rss_manager"/>
+
+    </dialog>
+
 
 
 </navigation>

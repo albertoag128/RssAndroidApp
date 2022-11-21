@@ -8,4 +8,7 @@
     <string name="feed_rss_name">News Feed</string>
     <string name="rss_manager_name">Rss Manager</string>
     <string name="profile_name">Your news</string>
+    <!--USER RSS FORM-->
+    <string name="save_button_text">GUARDAR RSS</string>
+    <string name="cancel_button_text">CANCELAR</string>
 </resources>
