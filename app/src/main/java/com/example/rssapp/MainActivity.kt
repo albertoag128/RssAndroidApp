@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun navigateToRssFeed(){
-        findNavController(R.id.fragment_container_view).navigate(R.id.rss_feed)
+        findNavController(R.id.fragment_container_view).navigate(NavGraphDirections.actionToRssFeed())
     }
 
     fun navigateToRssManager(){
@@ -50,4 +50,5 @@ class MainActivity : AppCompatActivity() {
     fun navigateToProfile(){
         findNavController(R.id.fragment_container_view).navigate(R.id.profile)
     }
+
 }
