@@ -58,4 +58,8 @@ class RssManagerFragment : Fragment() {
         findNavController().navigate(R.id.action_from_rssManager_to_bottomSheet)
     }
 
+
+    override fun onResume() {
+        super.onResume()
+    }
 }

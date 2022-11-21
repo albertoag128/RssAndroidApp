@@ -17,7 +17,7 @@ import com.google.android.material.snackbar.Snackbar
 
 class AddRssBottomSheetFragment : BottomSheetDialogFragment() {
 
-    var rssManagerBinding:FragmentRssManagerBinding?=null
+    //var rssManagerBinding:FragmentRssManagerBinding?=null
     var binding: AddNewRssBottomSheetBinding? = null
     val viewModel by lazy {
         this.activity?.let {
@@ -50,8 +50,10 @@ class AddRssBottomSheetFragment : BottomSheetDialogFragment() {
                     rssInputUrl.text.toString(),
                     rssInputName.text.toString()
                 )
-                findNavController().navigate(R.id.action_from_bottomSheet_to_rssManager)
-                rssManagerBinding?.let { it1 -> showSnackbar(it1) }
+                dismiss()
+                showSnackbar()
+                //findNavController().navigate(R.id.action_from_bottomSheet_to_rssManager)
+                //rssManagerBinding?.let { it1 -> showSnackbar(it1) }
             }
         }
     }
@@ -62,14 +64,12 @@ class AddRssBottomSheetFragment : BottomSheetDialogFragment() {
         }
     }
 
-    fun showSnackbar(binding:FragmentRssManagerBinding) {
-        binding.snackbar?.let {
-            Snackbar.make(
-                it,
-                "Registro guardado",
-                BaseTransientBottomBar.LENGTH_SHORT
-            ).show()
-        }
+    fun showSnackbar() {
+        Snackbar.make(
+            (requireActivity()).findViewById<ViewGroup>(R.id.view_content),
+            "Registro guardado",
+            BaseTransientBottomBar.LENGTH_SHORT
+        ).show()
     }
 
 }
