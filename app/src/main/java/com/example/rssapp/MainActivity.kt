@@ -44,11 +44,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun navigateToRssManager(){
-        findNavController(R.id.fragment_container_view).navigate(R.id.rss_manager)
+        findNavController(R.id.fragment_container_view).navigate(NavGraphDirections.actionToRssManager())
     }
 
     fun navigateToProfile(){
-        findNavController(R.id.fragment_container_view).navigate(R.id.profile)
+        findNavController(R.id.fragment_container_view).navigate(NavGraphDirections.actionToProfile())
     }
 
 }
