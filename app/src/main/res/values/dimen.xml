@@ -5,5 +5,10 @@
     <dimen name="buttons_size">20dp</dimen>
     <dimen name="container_padding">20dp</dimen>
     <dimen name="margin_items">10dp</dimen>
-
+    <!--RSS USER FEED-->
+    <dimen name="rec_view_padding">20dp</dimen>
+    <dimen name="rss_icon_dimen">100dp</dimen>
+    <dimen name="item_text_size">20dp</dimen>
+    <dimen name="margin_top_text">10dp</dimen>
+    <dimen name="margin_item">10dp</dimen>
 </resources>
