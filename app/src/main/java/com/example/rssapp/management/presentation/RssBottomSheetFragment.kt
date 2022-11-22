@@ -5,19 +5,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.app.serializer.GsonSerializer
 import com.example.rssapp.R
 import com.example.rssapp.databinding.AddNewRssBottomSheetBinding
-import com.example.rssapp.databinding.FragmentRssManagerBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 
-class AddRssBottomSheetFragment : BottomSheetDialogFragment() {
+class RssBottomSheetFragment : BottomSheetDialogFragment() {
 
-    //var rssManagerBinding:FragmentRssManagerBinding?=null
     var binding: AddNewRssBottomSheetBinding? = null
     val viewModel by lazy {
         this.activity?.let {
@@ -34,16 +31,11 @@ class AddRssBottomSheetFragment : BottomSheetDialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = AddNewRssBottomSheetBinding.inflate(inflater)
+        setupView()
         return binding?.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        setSaveButton()
-        setCancelButton()
-    }
-
-    fun setSaveButton() {
+    fun setupView(){
         binding?.apply {
             saveRssButton?.setOnClickListener {
                 viewModel?.saveRss(
@@ -52,15 +44,10 @@ class AddRssBottomSheetFragment : BottomSheetDialogFragment() {
                 )
                 dismiss()
                 showSnackbar()
-                //findNavController().navigate(R.id.action_from_bottomSheet_to_rssManager)
-                //rssManagerBinding?.let { it1 -> showSnackbar(it1) }
             }
-        }
-    }
-
-    fun setCancelButton() {
-        binding?.cancelRssButton?.setOnClickListener {
-            findNavController().navigate(R.id.action_from_bottomSheet_to_rssManager)
+            binding?.cancelRssButton?.setOnClickListener {
+                findNavController().navigate(R.id.action_from_bottomSheet_to_rssManager)
+            }
         }
     }
 
