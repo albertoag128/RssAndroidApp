@@ -38,10 +38,6 @@ class RssManagerFragment : Fragment() {
         return binding?.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-    }
-
     fun openBottomSheet(){
         binding?.rssManagerToolbar?.apply {
             title = getString(R.string.rss_manager_fragment_title)
@@ -56,10 +52,5 @@ class RssManagerFragment : Fragment() {
 
     fun showBottomSheet(){
         findNavController().navigate(R.id.action_from_rssManager_to_bottomSheet)
-    }
-
-
-    override fun onResume() {
-        super.onResume()
     }
 }
