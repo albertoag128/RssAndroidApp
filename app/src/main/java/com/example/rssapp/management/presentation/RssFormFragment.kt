@@ -13,7 +13,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 
-class RssBottomSheetFragment : BottomSheetDialogFragment() {
+class RssFormFragment : BottomSheetDialogFragment() {
 
     var binding: AddNewRssBottomSheetBinding? = null
     val viewModel by lazy {

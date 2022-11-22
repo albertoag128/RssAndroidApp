@@ -36,7 +36,7 @@
 
     <dialog
         android:id="@+id/bottom_sheet"
-        android:name="com.example.rssapp.management.presentation.RssBottomSheetFragment">
+        android:name="com.example.rssapp.management.presentation.RssFormFragment">
 
         <action
             android:id="@+id/action_from_bottomSheet_to_rssManager"

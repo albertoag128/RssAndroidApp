@@ -9,8 +9,8 @@ import com.example.rssapp.management.domain.AddUserRssUseCase
 class RssManagerFactory {
 
 
-    fun saveUserRss(sharedPreferences: SharedPreferences, serializer:KSerializer):RssManagerViewModel{
-        return RssManagerViewModel(
+    fun saveUserRss(sharedPreferences: SharedPreferences, serializer:KSerializer):RssFormViewModel{
+        return RssFormViewModel(
             AddUserRssUseCase(
                 RssDataRepository(
                     XmlLocalDataSource(

@@ -7,7 +7,7 @@ import com.example.rssapp.management.domain.AddUserRssUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class RssManagerViewModel(private val addUserRssUseCase: AddUserRssUseCase) : ViewModel() {
+class RssFormViewModel(private val addUserRssUseCase: AddUserRssUseCase) : ViewModel() {
 
     val rssManagerPublisher: MutableLiveData<RssManagerUiState> by lazy {
         MutableLiveData<RssManagerUiState>()
