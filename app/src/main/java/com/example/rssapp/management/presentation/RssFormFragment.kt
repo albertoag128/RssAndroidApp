@@ -8,17 +8,17 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.app.serializer.GsonSerializer
 import com.example.rssapp.R
-import com.example.rssapp.databinding.AddNewRssBottomSheetBinding
+import com.example.rssapp.databinding.RssUserFormBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 
 class RssFormFragment : BottomSheetDialogFragment() {
 
-    var binding: AddNewRssBottomSheetBinding? = null
+    var binding: RssUserFormBinding? = null
     val viewModel by lazy {
         this.activity?.let {
-            RssManagerFactory().saveUserRss(
+            RssFormFactory().saveUserRss(
                 it.getPreferences(Context.MODE_PRIVATE),
                 GsonSerializer()
             )
@@ -30,7 +30,7 @@ class RssFormFragment : BottomSheetDialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = AddNewRssBottomSheetBinding.inflate(inflater)
+        binding = RssUserFormBinding.inflate(inflater)
         setupView()
         return binding?.root
     }
@@ -44,6 +44,7 @@ class RssFormFragment : BottomSheetDialogFragment() {
                 )
                 dismiss()
                 showSnackbar()
+                //SI CONSIGUIERA LLAMAR AQUI AL GETRSS DEL FRAGMENT LA RSS SE VERIA AUTOMATICAMENTE
             }
             binding?.cancelRssButton?.setOnClickListener {
                 findNavController().navigate(R.id.action_from_bottomSheet_to_rssManager)

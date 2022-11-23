@@ -4,13 +4,14 @@ import android.content.SharedPreferences
 import com.example.app.serializer.KSerializer
 import com.example.rssapp.management.data.RssDataRepository
 import com.example.rssapp.management.data.xml.XmlLocalDataSource
-import com.example.rssapp.management.domain.GetUserRssUseCase
+import com.example.rssapp.management.domain.AddUserRssUseCase
 
-class RssManagerFactory {
+class RssFormFactory {
 
-    fun getRss(serializer:KSerializer, sharedPreferences: SharedPreferences):RssManagerViewModel{
-        return RssManagerViewModel(
-            GetUserRssUseCase(
+
+    fun saveUserRss(sharedPreferences: SharedPreferences, serializer:KSerializer):RssFormViewModel{
+        return RssFormViewModel(
+            AddUserRssUseCase(
                 RssDataRepository(
                     XmlLocalDataSource(
                         sharedPreferences, serializer
@@ -19,5 +20,7 @@ class RssManagerFactory {
             )
         )
     }
+
+
 
 }
