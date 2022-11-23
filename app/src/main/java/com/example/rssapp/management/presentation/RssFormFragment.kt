@@ -44,7 +44,6 @@ class RssFormFragment : BottomSheetDialogFragment() {
                 )
                 dismiss()
                 showSnackbar()
-                //SI CONSIGUIERA LLAMAR AQUI AL GETRSS DEL FRAGMENT LA RSS SE VERIA AUTOMATICAMENTE
             }
             binding?.cancelRssButton?.setOnClickListener {
                 findNavController().navigate(R.id.action_from_bottomSheet_to_rssManager)
