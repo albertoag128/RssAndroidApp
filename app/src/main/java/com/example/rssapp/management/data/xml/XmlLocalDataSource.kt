@@ -24,4 +24,9 @@ class XmlLocalDataSource (val sharedPreferences: SharedPreferences, private val 
         return rssList
     }
 
+    override fun deleteRss(url: String) {
+        editor.remove(url).apply()
+    }
+
+
 }
