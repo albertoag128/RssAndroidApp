@@ -42,11 +42,11 @@ class RssBottomSheetFragment : BottomSheetDialogFragment() {
                     rssInputUrl.text.toString(),
                     rssInputName.text.toString()
                 )
-                dismiss()
+                findNavController().navigateUp()
                 showSnackbar()
             }
             binding?.cancelRssButton?.setOnClickListener {
-                findNavController().navigate(R.id.action_from_bottomSheet_to_rssManager)
+                findNavController().navigateUp()
             }
         }
     }
@@ -54,7 +54,7 @@ class RssBottomSheetFragment : BottomSheetDialogFragment() {
     fun showSnackbar() {
         Snackbar.make(
             (requireActivity()).findViewById<ViewGroup>(R.id.view_content),
-            "Registro guardado",
+            R.string.snackbar_text,
             BaseTransientBottomBar.LENGTH_SHORT
         ).show()
     }
