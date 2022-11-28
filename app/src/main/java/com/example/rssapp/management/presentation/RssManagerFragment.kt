@@ -18,6 +18,7 @@ import androidx.navigation.NavGraph
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.app.serializer.GsonSerializer
+import com.example.rssapp.NavGraphDirections
 import com.example.rssapp.R
 import com.example.rssapp.databinding.ActivityMainBinding
 import com.example.rssapp.databinding.FragmentRssManagerBinding
@@ -54,6 +55,6 @@ class RssManagerFragment : Fragment() {
     }
 
     fun navigateToBottomSheet(){
-        findNavController().navigate()
+        findNavController().navigate(RssManagerFragmentDirections.actionToBottomSheet())
     }
 }

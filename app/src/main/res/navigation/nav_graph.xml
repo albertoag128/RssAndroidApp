@@ -32,6 +32,11 @@
         android:name="com.example.rssapp.management.presentation.RssManagerFragment"
         android:label="@string/rss_manager_fragment_title">
 
+        <action
+            android:id="@+id/action_to_bottom_sheet"
+            app:destination="@+id/bottom_sheet"/>
+
+
     </fragment>
 
 
@@ -39,16 +44,14 @@
         android:id="@+id/profile"
         android:name="com.example.rssapp.profile.presentation.ProfileFragment"
         android:label="@string/profile_fragment_title">
+
+
     </fragment>
 
 
     <dialog
         android:id="@+id/bottom_sheet"
         android:name="com.example.rssapp.management.presentation.RssBottomSheetFragment">
-
-        <action
-            android:id="@+id/action_from_bottomSheet_to_rssManager"
-            app:destination="@+id/rss_manager"/>
 
     </dialog>
 
