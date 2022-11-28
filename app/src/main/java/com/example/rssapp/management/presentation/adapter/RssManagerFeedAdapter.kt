@@ -9,6 +9,11 @@ import com.example.rssapp.management.domain.UserRss
 class RssManagerFeedAdapter : RecyclerView.Adapter<RssManagerFeedViewHolder>(){
 
     var dataSet = mutableListOf<UserRss>()
+    var itemClick: ((String) -> Unit)? =null
+
+    fun setOnClick(itemClick :(String) -> Unit){
+        this.itemClick = itemClick
+    }
 
     fun setDataItems(rss: List<UserRss>){
         dataSet.clear()
@@ -22,7 +27,7 @@ class RssManagerFeedAdapter : RecyclerView.Adapter<RssManagerFeedViewHolder>(){
     }
 
     override fun onBindViewHolder(holder: RssManagerFeedViewHolder, position: Int) {
-        holder.bind(dataSet[position])
+        holder.bind(dataSet[position], itemClick)
     }
 
     override fun getItemCount(): Int {

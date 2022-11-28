@@ -22,8 +22,8 @@ import com.example.rssapp.databinding.ActivityMainBinding
 import com.example.rssapp.databinding.FragmentRssManagerBinding
 import com.example.rssapp.management.data.xml.XmlLocalDataSource
 import com.example.rssapp.management.presentation.adapter.RssManagerFeedAdapter
-import com.faltenreich.skeletonlayout.Skeleton
-import com.faltenreich.skeletonlayout.applySkeleton
+//import com.faltenreich.skeletonlayout.Skeleton
+//import com.faltenreich.skeletonlayout.applySkeleton
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.snackbar.BaseTransientBottomBar
@@ -31,7 +31,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 
 class RssManagerFragment : Fragment() {
-    var skeleton: Skeleton?=null
+    //var skeleton: Skeleton?=null
     var binding:FragmentRssManagerBinding?=null
     var rssAdapter = RssManagerFeedAdapter()
     val viewModel by lazy{
@@ -83,7 +83,10 @@ class RssManagerFragment : Fragment() {
                 LinearLayoutManager.VERTICAL,
                 false
             )
-            skeleton = feedListRecyclerView.applySkeleton(R.layout.fragment_rss_feed)
+           // skeleton = feedListRecyclerView.applySkeleton(R.layout.fragment_rss_feed)
+            rssAdapter.setOnClick{
+                viewModel?.deleteRss(it)
+            }
         }
     }
 
@@ -91,9 +94,9 @@ class RssManagerFragment : Fragment() {
         val rssFeedSubscriber =
             Observer<RssManagerViewModel.RssManagerFeedUiState> { uiState ->
                 if (uiState.isLoading) {
-                    skeleton?.showSkeleton()
+                    //skeleton?.showSkeleton()
                 } else {
-                    skeleton?.showOriginal()
+                    //skeleton?.showOriginal()
                     rssAdapter?.setDataItems(uiState.rssFeed)
                 }
             }

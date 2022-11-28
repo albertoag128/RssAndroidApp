@@ -6,9 +6,12 @@ import com.example.rssapp.databinding.UserRssItemFragmentBinding
 import com.example.rssapp.management.domain.UserRss
 
 class RssManagerFeedViewHolder (val view: View): RecyclerView.ViewHolder(view){
-    fun bind(rss:UserRss){
+    fun bind(rss: UserRss, itemClick: ((String) -> Unit?)?){
         val binding = UserRssItemFragmentBinding.bind(view)
         binding.nombreRss.text = rss.name
         binding.urlRss.text = rss.url
+        binding.deleteItemIcon.setOnClickListener {
+            itemClick?.invoke(rss.url)
+        }
     }
 }
