@@ -64,15 +64,15 @@ class RssManagerFragment : Fragment() {
             title = getString(R.string.rss_manager_fragment_title)
             setOnMenuItemClickListener {
                 when (it.itemId) {
-                    R.id.action_add_new_rss -> showBottomSheet()
+                    R.id.action_add_new_rss -> navigateToBottomSheet()
                 }
                 true
             }
         }
     }
 
-    fun showBottomSheet() {
-        findNavController().navigate(R.id.action_from_rssManager_to_bottomSheet)
+    fun navigateToBottomSheet() {
+        findNavController().navigate(RssManagerFragmentDirections.actionToBottomSheet())
     }
 
     fun setupView() {

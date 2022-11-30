@@ -35,7 +35,7 @@
         android:label="@string/rss_manager_fragment_title">
 
         <action
-            android:id="@+id/action_from_rssManager_to_bottomSheet"
+            android:id="@+id/action_to_bottomSheet"
             app:destination="@+id/bottom_sheet"/>
 
     </fragment>
