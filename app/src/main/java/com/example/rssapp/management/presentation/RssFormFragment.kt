@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.app.serializer.GsonSerializer
+import com.example.app.snackbar.showSnackbar
 import com.example.rssapp.R
 import com.example.rssapp.databinding.RssUserFormBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -43,7 +44,7 @@ class RssFormFragment : BottomSheetDialogFragment() {
                     rssInputName.text.toString()
                 )
                 dismiss()
-                showSnackbar()
+                (requireActivity()).findViewById<ViewGroup>(R.id.view_content).showSnackbar(getString(R.string.snackbar_save_text))
             }
             binding?.cancelRssButton?.setOnClickListener {
                 findNavController().navigate(R.id.action_from_bottomSheet_to_rssManager)

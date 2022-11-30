@@ -17,6 +17,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.app.serializer.GsonSerializer
+import com.example.app.snackbar.showSnackbar
 import com.example.rssapp.R
 import com.example.rssapp.databinding.ActivityMainBinding
 import com.example.rssapp.databinding.FragmentRssManagerBinding
@@ -31,10 +32,9 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 
 class RssManagerFragment : Fragment() {
-    //var skeleton: Skeleton?=null
-    var binding:FragmentRssManagerBinding?=null
+    var binding: FragmentRssManagerBinding? = null
     var rssAdapter = RssManagerFeedAdapter()
-    val viewModel by lazy{
+    val viewModel by lazy {
         this.activity?.let {
             RssManagerFactory().getRss(
                 GsonSerializer(), it.getPreferences(Context.MODE_PRIVATE)
@@ -59,11 +59,11 @@ class RssManagerFragment : Fragment() {
         viewModel?.getRss()
     }
 
-    fun openBottomSheet(){
+    fun openBottomSheet() {
         binding?.rssManagerToolbar?.apply {
             title = getString(R.string.rss_manager_fragment_title)
             setOnMenuItemClickListener {
-                when(it.itemId){
+                when (it.itemId) {
                     R.id.action_add_new_rss -> showBottomSheet()
                 }
                 true
@@ -71,11 +71,11 @@ class RssManagerFragment : Fragment() {
         }
     }
 
-    fun showBottomSheet(){
+    fun showBottomSheet() {
         findNavController().navigate(R.id.action_from_rssManager_to_bottomSheet)
     }
 
-    fun setupView(){
+    fun setupView() {
         binding?.apply {
             feedListRecyclerView.adapter = rssAdapter
             feedListRecyclerView.layoutManager = LinearLayoutManager(
@@ -83,25 +83,20 @@ class RssManagerFragment : Fragment() {
                 LinearLayoutManager.VERTICAL,
                 false
             )
-           // skeleton = feedListRecyclerView.applySkeleton(R.layout.fragment_rss_feed)
-            rssAdapter.setOnClick{
+            rssAdapter.setOnClick {
                 viewModel?.deleteRss(it)
+                (requireActivity()).findViewById<ViewGroup>(R.id.view_content).showSnackbar(
+                    getString(R.string.snackbar_delete_text))
             }
         }
     }
 
-    fun setupObservers(){
+    fun setupObservers() {
         val rssFeedSubscriber =
             Observer<RssManagerViewModel.RssManagerFeedUiState> { uiState ->
-                if (uiState.isLoading) {
-                    //skeleton?.showSkeleton()
-                } else {
-                    //skeleton?.showOriginal()
-                    rssAdapter?.setDataItems(uiState.rssFeed)
-                }
+                rssAdapter?.setDataItems(uiState.rssFeed)
             }
         viewModel?.rssManagerFeedPublisher?.observe(viewLifecycleOwner, rssFeedSubscriber)
     }
-
 
 }
