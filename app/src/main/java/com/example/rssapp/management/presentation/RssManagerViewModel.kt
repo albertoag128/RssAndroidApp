@@ -19,11 +19,11 @@ class RssManagerViewModel (private val getUserRssUseCase: GetUserRssUseCase, val
         rssManagerFeedPublisher.value = RssManagerFeedUiState(true)
 
         viewModelScope.launch(Dispatchers.IO){
-            val rssFeed = getUserRssUseCase.execute()
+            val rssFeed = getUserRssUseCase.invoke()
             rssManagerFeedPublisher.postValue(
                 RssManagerFeedUiState(
                     isLoading = false,
-                    rssFeed = rssFeed
+                    //rssFeed = rssFeed
                 )
             )
         }
@@ -31,7 +31,7 @@ class RssManagerViewModel (private val getUserRssUseCase: GetUserRssUseCase, val
 
     fun deleteRss(url:String){
         viewModelScope.launch (Dispatchers.IO){
-            deleteRssUseCase.execute(url)
+            deleteRssUseCase.invoke(url)
         }
     }
 

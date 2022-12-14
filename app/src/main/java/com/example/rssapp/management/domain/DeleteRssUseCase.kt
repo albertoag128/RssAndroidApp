@@ -1,7 +1,7 @@
 package com.example.rssapp.management.domain
 
 class DeleteRssUseCase (val repository: UserRssRepository) {
-    fun execute(url:String){
+    suspend fun invoke(url:String){
         repository.deleteRss(url)
     }
 }

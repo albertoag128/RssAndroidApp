@@ -3,6 +3,7 @@ package com.example.rssapp.management.presentation
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.provider.ContactsContract.Data
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
@@ -36,8 +37,8 @@ class RssManagerFragment : Fragment() {
     var rssAdapter = RssManagerFeedAdapter()
     val viewModel by lazy {
         this.activity?.let {
-            RssManagerFactory().getRss(
-                GsonSerializer(), it.getPreferences(Context.MODE_PRIVATE)
+            DataStoreFactory().injectViewModel(
+                requireContext()
             )
         }
     }
@@ -56,7 +57,7 @@ class RssManagerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupObservers()
-        viewModel?.getRss()
+        viewModel?.obtainUserRssList()
     }
 
     fun openBottomSheet() {
@@ -84,7 +85,7 @@ class RssManagerFragment : Fragment() {
                 false
             )
             rssAdapter.setOnClick {
-                viewModel?.deleteRss(it)
+                viewModel?.deleteUserRss(it)
                 (requireActivity()).findViewById<ViewGroup>(R.id.view_content).showSnackbar(
                     getString(R.string.snackbar_delete_text))
             }
@@ -93,10 +94,10 @@ class RssManagerFragment : Fragment() {
 
     fun setupObservers() {
         val rssFeedSubscriber =
-            Observer<RssManagerViewModel.RssManagerFeedUiState> { uiState ->
-                rssAdapter?.setDataItems(uiState.rssFeed)
+            Observer<RssDataStoreViewModel.UiState> { uiState ->
+                uiState.userRssList?.let { rssAdapter?.setDataItems(it) }
             }
-        viewModel?.rssManagerFeedPublisher?.observe(viewLifecycleOwner, rssFeedSubscriber)
+        viewModel?.uiState?.observe(viewLifecycleOwner, rssFeedSubscriber)
     }
 
 }

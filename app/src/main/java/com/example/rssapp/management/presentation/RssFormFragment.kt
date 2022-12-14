@@ -22,6 +22,7 @@ class RssFormFragment : BottomSheetDialogFragment() {
         this.activity?.let {
             RssFormFactory().saveUserRss(
                 it.getPreferences(Context.MODE_PRIVATE),
+                requireContext(),
                 GsonSerializer()
             )
         }

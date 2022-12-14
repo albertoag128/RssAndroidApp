@@ -17,7 +17,7 @@ class RssFormViewModel(private val addUserRssUseCase: AddUserRssUseCase) : ViewM
         rssManagerPublisher.value = RssManagerUiState(true)
 
         viewModelScope.launch(Dispatchers.IO){
-            addUserRssUseCase.execute(url, name)
+            addUserRssUseCase.invoke(url, name)
             rssManagerPublisher.postValue(
                 RssManagerUiState(
                     isSuccess = true

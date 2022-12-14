@@ -57,6 +57,8 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
     //SKELETON
     implementation 'com.faltenreich:skeletonlayout:4.0.0'
+    //DATA STORE
+    implementation "androidx.datastore:datastore-preferences:1.0.0-alpha07"
     //ANDROID DEFAULT IMPLEMENTATIONS
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'

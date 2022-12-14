@@ -1,21 +1,23 @@
 package com.example.rssapp.management.data
 
+import com.example.rssapp.management.data.datastore.RssDSLocalDataSource
 import com.example.rssapp.management.data.xml.XmlLocalDataSource
 import com.example.rssapp.management.domain.UserRss
 import com.example.rssapp.management.domain.UserRssRepository
+import kotlinx.coroutines.flow.Flow
 
-class RssDataRepository (private val source: XmlLocalDataSource): UserRssRepository{
+class RssDataRepository (private val source: RssDSLocalDataSource): UserRssRepository{
 
-    override fun saveUserRss(url: String, name: String) {
-        source.createRss(url, name)
+    override suspend fun saveUserRss(url: String, name: String) {
+        source.saveUserRss(url, name)
     }
 
-    override fun getUserRss(): List<UserRss> {
-        return source.getUserRss()
+    override fun getUserRss(): Flow<List<UserRss>> {
+        return source.obtainUserRss()
     }
 
-    override fun deleteRss(url: String) {
-        source.deleteRss(url)
+    override suspend fun deleteRss(url: String) {
+        source.deleteUserRss(url)
     }
 
 
