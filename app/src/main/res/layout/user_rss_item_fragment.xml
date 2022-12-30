@@ -36,8 +36,9 @@
         android:layout_marginBottom="@dimen/margin_top_text"
         tools:text="Esto es una URL"/>
 
-    <ImageView
+    <ImageButton
         android:id="@+id/delete_item_icon"
+        android:background="@android:color/transparent"
         android:layout_width="@dimen/delete_icon_size"
         android:layout_height="@dimen/delete_icon_size"
         android:src="@drawable/delete"
