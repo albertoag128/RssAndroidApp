@@ -5,7 +5,7 @@ import com.example.app.serializer.KSerializer
 import com.example.rssapp.management.data.RssLocalSource
 import com.example.rssapp.management.domain.UserRss
 
-class XmlLocalDataSource (val sharedPreferences: SharedPreferences, private val serializer: KSerializer) : RssLocalSource{
+class XmlLocalDataSource (private val sharedPreferences: SharedPreferences, private val serializer: KSerializer) : RssLocalSource{
 
     private val editor = sharedPreferences.edit()
 
@@ -23,5 +23,10 @@ class XmlLocalDataSource (val sharedPreferences: SharedPreferences, private val 
         }
         return rssList
     }
+
+    override fun deleteRss(url: String) {
+        editor.remove(url).apply()
+    }
+
 
 }
