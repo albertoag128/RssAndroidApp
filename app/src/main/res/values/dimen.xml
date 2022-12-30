@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--RSS USER FORM-->
+    <dimen name="form_inputs_size">20dp</dimen>
+    <dimen name="buttons_size">20dp</dimen>
+    <dimen name="container_padding">20dp</dimen>
+    <dimen name="margin_items">10dp</dimen>
+
+</resources>

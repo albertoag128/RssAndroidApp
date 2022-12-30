@@ -4,6 +4,20 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/rss_feed">
 
+    <action
+        android:id="@+id/action_to_rss_feed"
+        app:destination="@id/rss_feed"
+        />
+
+    <action
+        android:id="@+id/action_to_rss_manager"
+        app:destination="@id/rss_manager"
+        />
+
+    <action
+        android:id="@+id/action_to_profile"
+        app:destination="@id/profile"
+        />
 
     <fragment
         android:id="@+id/rss_feed"
@@ -18,6 +32,10 @@
         android:name="com.example.rssapp.management.presentation.RssManagerFragment"
         android:label="@string/rss_manager_fragment_title">
 
+        <action
+            android:id="@+id/action_to_bottom_sheet"
+            app:destination="@+id/bottom_sheet"/>
+
 
     </fragment>
 
@@ -29,6 +47,14 @@
 
 
     </fragment>
+
+
+    <dialog
+        android:id="@+id/bottom_sheet"
+        android:name="com.example.rssapp.management.presentation.RssBottomSheetFragment">
+
+    </dialog>
+
 
 
 </navigation>
