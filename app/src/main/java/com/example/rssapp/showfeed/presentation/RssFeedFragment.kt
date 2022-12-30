@@ -9,7 +9,7 @@ import com.example.rssapp.databinding.FragmentRssFeedBinding
 
 class RssFeedFragment : Fragment() {
 
-    var binding:FragmentRssFeedBinding?=null
+    private var binding:FragmentRssFeedBinding?=null
 
     override fun onCreateView(
         inflater: LayoutInflater,

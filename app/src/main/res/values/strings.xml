@@ -11,4 +11,6 @@
     <!--USER RSS FORM-->
     <string name="save_button_text">GUARDAR RSS</string>
     <string name="cancel_button_text">CANCELAR</string>
+    <string name="snackbar_save_text">Registro guardado correctamente</string>
+    <string name="snackbar_delete_text">Registro eliminado correctamente</string>
 </resources>
