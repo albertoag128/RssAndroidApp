@@ -9,7 +9,7 @@ import com.example.rssapp.databinding.FragmentProfileBinding
 
 class ProfileFragment : Fragment() {
 
-    var binding:FragmentProfileBinding?=null
+    private var binding:FragmentProfileBinding?=null
 
     override fun onCreateView(
         inflater: LayoutInflater,
