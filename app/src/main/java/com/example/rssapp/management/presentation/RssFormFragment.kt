@@ -8,17 +8,14 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.app.serializer.GsonSerializer
 import com.example.app.snackbar.showSnackbar
-import com.example.rssapp.NavGraphDirections
 import com.example.rssapp.R
 import com.example.rssapp.databinding.RssUserFormBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.google.android.material.snackbar.BaseTransientBottomBar
-import com.google.android.material.snackbar.Snackbar
 
 class RssFormFragment : BottomSheetDialogFragment() {
 
-    var binding: RssUserFormBinding? = null
-    val viewModel by lazy {
+    private var binding: RssUserFormBinding? = null
+    private val viewModel by lazy {
         this.activity?.let {
             RssFormFactory().saveUserRss(
                 it.getPreferences(Context.MODE_PRIVATE),
@@ -37,7 +34,7 @@ class RssFormFragment : BottomSheetDialogFragment() {
         return binding?.root
     }
 
-    fun setupView(){
+    private fun setupView(){
         binding?.apply {
             saveRssButton?.setOnClickListener {
                 viewModel?.saveRss(
