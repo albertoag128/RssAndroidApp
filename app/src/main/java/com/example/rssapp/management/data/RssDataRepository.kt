@@ -14,5 +14,9 @@ class RssDataRepository (private val source: XmlLocalDataSource): UserRssReposit
         return source.getUserRss()
     }
 
+    override fun deleteRss(url: String) {
+        source.deleteRss(url)
+    }
+
 
 }

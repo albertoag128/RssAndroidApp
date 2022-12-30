@@ -1,18 +1,14 @@
 package com.example.rssapp
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
 import com.example.rssapp.databinding.ActivityMainBinding
-import com.google.android.material.bottomnavigation.BottomNavigationItemView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
-    var binding:ActivityMainBinding?=null
+    private var binding:ActivityMainBinding?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,14 +16,14 @@ class MainActivity : AppCompatActivity() {
         setupNavigation()
     }
 
-    fun setupBinding(){
+    private fun setupBinding(){
         binding = ActivityMainBinding.inflate(layoutInflater)
         binding?.let {
             setContentView(it.root)
         }
     }
 
-    fun setupNavigation(){
+    private fun setupNavigation(){
         findViewById<BottomNavigationView>(R.id.bottom_menu).setOnItemSelectedListener {
             when(it.itemId){
                 R.id.to_rss_feed_item -> navigateToRssFeed()
@@ -38,15 +34,16 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun navigateToRssFeed(){
-        findNavController(R.id.fragment_container_view).navigate(R.id.rss_feed)
+    private fun navigateToRssFeed(){
+        findNavController(R.id.fragment_container_view).navigate(NavGraphDirections.actionToRssFeed())
     }
 
-    fun navigateToRssManager(){
-        findNavController(R.id.fragment_container_view).navigate(R.id.rss_manager)
+    private fun navigateToRssManager(){
+        findNavController(R.id.fragment_container_view).navigate(NavGraphDirections.actionToRssManager())
     }
 
-    fun navigateToProfile(){
-        findNavController(R.id.fragment_container_view).navigate(R.id.profile)
+    private fun navigateToProfile(){
+        findNavController(R.id.fragment_container_view).navigate(NavGraphDirections.actionToProfile())
     }
+
 }
