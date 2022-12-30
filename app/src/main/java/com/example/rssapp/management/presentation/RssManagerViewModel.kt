@@ -24,11 +24,32 @@ class RssManagerViewModel (private val getUserRssUseCase: GetUserRssUseCase, val
                 RssManagerFeedUiState(
                     isLoading = false,
                     rssFeed = rssFeed
+
+import com.example.rssapp.management.domain.AddUserRssUseCase
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+
+class RssManagerViewModel(private val addUserRssUseCase: AddUserRssUseCase) : ViewModel() {
+
+    val rssManagerPublisher: MutableLiveData<RssManagerUiState> by lazy {
+        MutableLiveData<RssManagerUiState>()
+    }
+
+    fun saveRss(url:String, name:String){
+        rssManagerPublisher.value = RssManagerUiState(true)
+
+        viewModelScope.launch(Dispatchers.IO){
+            addUserRssUseCase.execute(url, name)
+            rssManagerPublisher.postValue(
+                RssManagerUiState(
+                    isSuccess = true
+ issue10_rss_form
                 )
             )
         }
     }
 
+issue11_get_user_rss
     fun deleteRss(url:String){
         viewModelScope.launch (Dispatchers.IO){
             deleteRssUseCase.execute(url)
@@ -39,4 +60,10 @@ class RssManagerViewModel (private val getUserRssUseCase: GetUserRssUseCase, val
         val isLoading: Boolean = false,
         val rssFeed: List<UserRss> = emptyList()
     )
+
+    data class RssManagerUiState(
+        val isSuccess: Boolean = false
+        )
+
+ issue10_rss_form
 }

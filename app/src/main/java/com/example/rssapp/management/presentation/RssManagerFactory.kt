@@ -19,6 +19,15 @@ class RssManagerFactory {
                 )
             ),
             DeleteRssUseCase(
+
+import com.example.rssapp.management.domain.AddUserRssUseCase
+
+class RssManagerFactory {
+
+
+    fun saveUserRss(sharedPreferences: SharedPreferences, serializer:KSerializer):RssManagerViewModel{
+        return RssManagerViewModel(
+            AddUserRssUseCase(
                 RssDataRepository(
                     XmlLocalDataSource(
                         sharedPreferences, serializer
@@ -27,5 +36,4 @@ class RssManagerFactory {
             )
         )
     }
-
 }

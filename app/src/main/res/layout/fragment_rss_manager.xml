@@ -6,6 +6,7 @@
     android:id="@+id/fragmentRssManager"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/rss_manager_toolbar"
         style="@style/DefaultBackground"
@@ -18,6 +19,7 @@
         android:theme="@style/Theme.RssApp"/>
 
 
+
     <androidx.recyclerview.widget.RecyclerView
         android:padding="@dimen/rec_view_padding"
         android:id="@+id/feed_list_recycler_view"
@@ -27,6 +29,15 @@
         app:layout_constraintTop_toBottomOf="@+id/rss_manager_toolbar"
         app:layout_constraintStart_toStartOf="parent"
         tools:listitem="@layout/user_rss_item_fragment"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RSS MANAGER"
+        android:textSize="30dp"
+        app:layout_constraintStart_toStartOf="@id/rss_manager_toolbar"
+        app:layout_constraintTop_toBottomOf="@id/rss_manager_toolbar"/>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
