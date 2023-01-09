@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/add_rss_bottom_sheet"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+    android:padding="@dimen/container_padding"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <EditText
+        android:id="@+id/rss_input_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/feed_rss_name"
+        android:textSize="@dimen/form_inputs_size"
+        android:layout_margin="@dimen/margin_items"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <EditText
+        android:id="@+id/rss_input_url"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/input_url_hint"
+        android:textSize="@dimen/form_inputs_size"
+        android:layout_margin="@dimen/margin_items"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rss_input_name"/>
+
+    <Button
+        android:id="@+id/save_rss_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="@string/save_button_text"
+        android:layout_margin="@dimen/margin_items"
+        app:layout_constraintTop_toBottomOf="@+id/rss_input_url"/>
+
+    <Button
+        android:id="@+id/cancel_rss_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/cancel_button_text"
+        android:layout_margin="@dimen/margin_items"
+        app:layout_constraintTop_toBottomOf="@+id/rss_input_url"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
