@@ -29,6 +29,7 @@ class RssManagerViewModel (private val getUserRssUseCase: GetUserRssUseCase, val
         }
     }
 
+
     fun deleteRss(url:String){
         viewModelScope.launch (Dispatchers.IO){
             deleteRssUseCase.invoke(url)

@@ -28,5 +28,14 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:listitem="@layout/user_rss_item_fragment"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RSS MANAGER"
+        android:textSize="30dp"
+        app:layout_constraintStart_toStartOf="@id/rss_manager_toolbar"
+        app:layout_constraintTop_toBottomOf="@id/rss_manager_toolbar"/>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

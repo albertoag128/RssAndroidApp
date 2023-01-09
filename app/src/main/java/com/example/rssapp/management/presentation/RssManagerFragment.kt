@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.provider.ContactsContract.Data
+import android.text.Layout.Directions
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
@@ -24,8 +25,15 @@ import com.example.rssapp.databinding.ActivityMainBinding
 import com.example.rssapp.databinding.FragmentRssManagerBinding
 import com.example.rssapp.management.data.xml.XmlLocalDataSource
 import com.example.rssapp.management.presentation.adapter.RssManagerFeedAdapter
-//import com.faltenreich.skeletonlayout.Skeleton
-//import com.faltenreich.skeletonlayout.applySkeleton
+import androidx.navigation.NavDirections
+import androidx.navigation.NavGraph
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import com.example.app.serializer.GsonSerializer
+import com.example.rssapp.NavGraphDirections
+import com.example.rssapp.R
+import com.example.rssapp.databinding.ActivityMainBinding
+import com.example.rssapp.databinding.FragmentRssManagerBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.snackbar.BaseTransientBottomBar
@@ -54,22 +62,11 @@ class RssManagerFragment : Fragment() {
         return binding?.root
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupObservers()
         viewModel?.obtainUserRssList()
-    }
-
-    fun openBottomSheet() {
-        binding?.rssManagerToolbar?.apply {
-            title = getString(R.string.rss_manager_fragment_title)
-            setOnMenuItemClickListener {
-                when (it.itemId) {
-                    R.id.action_add_new_rss -> navigateToBottomSheet()
-                }
-                true
-            }
-        }
     }
 
     fun navigateToBottomSheet() {
@@ -99,5 +96,4 @@ class RssManagerFragment : Fragment() {
             }
         viewModel?.uiState?.observe(viewLifecycleOwner, rssFeedSubscriber)
     }
-
 }

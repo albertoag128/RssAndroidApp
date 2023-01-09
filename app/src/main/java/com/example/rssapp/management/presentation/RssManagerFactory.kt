@@ -25,10 +25,10 @@ class RssManagerFactory {
                 RssDataRepository(
                     RssDSLocalDataSource(
                         applicationContext, GsonSerializer()
+
                     )
                 )
             )
         )
     }
-
 }
