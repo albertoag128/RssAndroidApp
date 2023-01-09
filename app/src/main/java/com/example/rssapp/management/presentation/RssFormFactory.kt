@@ -7,28 +7,23 @@ import com.example.app.serializer.KSerializer
 import com.example.rssapp.management.data.RssDataRepository
 import com.example.rssapp.management.data.datastore.RssDSLocalDataSource
 import com.example.rssapp.management.data.xml.XmlLocalDataSource
-import com.example.rssapp.management.domain.DeleteRssUseCase
-import com.example.rssapp.management.domain.GetUserRssUseCase
+import com.example.rssapp.management.domain.AddUserRssUseCase
 
-class RssManagerFactory {
+class RssFormFactory {
 
-    fun getRss(serializer:KSerializer, applicationContext: Context):RssManagerViewModel{
-        return RssManagerViewModel(
-            GetUserRssUseCase(
+
+    fun saveUserRss(sharedPreferences: SharedPreferences, applicationContext:Context, serializer:KSerializer):RssFormViewModel{
+        return RssFormViewModel(
+            AddUserRssUseCase(
                 RssDataRepository(
                     RssDSLocalDataSource(
                         applicationContext, GsonSerializer()
-                    )
-                )
-            ),
-            DeleteRssUseCase(
-                RssDataRepository(
-                    RssDSLocalDataSource(
-                        applicationContext, GsonSerializer()
-
                     )
                 )
             )
         )
     }
+
+
+
 }
